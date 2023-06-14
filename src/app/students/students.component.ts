@@ -12,7 +12,7 @@ import { MatPaginator } from '@angular/material/paginator';
 export class StudentsComponent {
 
   students: Student[] = [];
-  displayedColumns: string[] = ['firstName', 'lastName', 'birthDate', 'email', 'phone', 'gender'];
+  displayedColumns: string[] = ['firstName', 'lastName', 'birthDate', 'email', 'phone', 'gender', 'editIcon'];
   dataSource: MatTableDataSource<Student> = new MatTableDataSource<Student>();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 

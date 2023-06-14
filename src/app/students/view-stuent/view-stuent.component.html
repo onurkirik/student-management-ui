@@ -1,0 +1,69 @@
+<div class="d-flex justify-content-center align-items-center mt-4">
+    <a routerLink="" mat-raised-button color="primary">
+        <mat-icon>arrow_back_ios</mat-icon>Geri Dön
+    </a>
+    <div class="mx-4 col-4" *ngIf="student">
+        <form #studentDetailForm="ngForm">
+            <div class="row">
+                <div class="col-6">
+                    <mat-form-field style="width: 100%;" appearance="outline">
+                        <mat-label>Ad</mat-label>
+                        <input matInput [(ngModel)]="student!.firstName" name="firstName">
+                    </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field style="width: 100%;" appearance="outline">
+                        <mat-label>Soyad</mat-label>
+                        <input matInput [(ngModel)]="student!.lastName" name="lastName">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <mat-form-field appearance="outline">
+                    <mat-label>Doğum tarihi</mat-label>
+                    <input matInput [matDatepicker]="picker" [(ngModel)]="student!.birthDate" name="birthDate">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <mat-form-field style="width: 100%;" appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input matInput [(ngModel)]="student!.email" name="email">
+                    </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field style="width: 100%;" appearance="outline">
+                        <mat-label>Telefon</mat-label>
+                        <input matInput [(ngModel)]="student!.phone" name="phone">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <mat-form-field appearance="outline">
+                    <mat-label>Cinsiyet</mat-label>
+                    <mat-select [(ngModel)]="student.genderId" name="gender">
+                        <mat-option *ngFor="let gender of genders"
+                            [value]="gender.id">{{gender.description}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <mat-form-field style="width: 100%;" appearance="outline">
+                    <mat-label>Adres</mat-label>
+                    <textarea matInput [ngModel]="student!.adress.physicalAdress" name="adress"></textarea>
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <mat-form-field appearance="outline">
+                    <mat-label>Posta Kodu</mat-label>
+                    <input matInput [ngModel]="student.adress.postalAdress" name="adress">
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <button mat-raised-button color="primary" (click)="updateStudent()">Kaydet</button>
+            </div>
+        </form>
+    </div>
+</div>

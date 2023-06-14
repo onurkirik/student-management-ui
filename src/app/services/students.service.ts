@@ -16,4 +16,12 @@ export class StudentsService {
     return this._httpClient.get<Student[]>(`${this.baseApiUrl}/Students/get-all`);
   }
 
+  public getStudent(studentId: string | null): Observable<Student> {
+    return this._httpClient.get<Student>(`${this.baseApiUrl}/students/${studentId}`);
+  }
+
+  public update(studentId: string | null, requestData: Student): Observable<Student> {
+    return this._httpClient.put<Student>(`${this.baseApiUrl}/students/update-student/${studentId}`, requestData);
+  }
+
 }
