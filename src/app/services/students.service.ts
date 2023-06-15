@@ -24,4 +24,8 @@ export class StudentsService {
     return this._httpClient.put<Student>(`${this.baseApiUrl}/students/update-student/${studentId}`, requestData);
   }
 
+  public deleteStudent(studentId: string | null) : Observable<Student> {
+    return this._httpClient.delete<Student>(`${this.baseApiUrl}/Students/delete-student/${studentId}`);
+  }
+
 }

@@ -6,7 +6,7 @@ import { ViewStuentComponent } from './students/view-stuent/view-stuent.componen
 const routes: Routes = [
   { path: '', component: StudentsComponent },
   { path: 'students', component: StudentsComponent },
-  { path: 'students/:id', component: ViewStuentComponent }
+  { path: 'students/:id', component: ViewStuentComponent },
 ];
 
 @NgModule({

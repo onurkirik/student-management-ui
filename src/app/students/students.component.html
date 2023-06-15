@@ -3,7 +3,10 @@
 </div>
 
 <div class="container">
-    <div class="mat-elevation-z8">
+
+    <a routerLink="students/create-student" class="fs-2"><mat-icon class="fs-2">add</mat-icon></a>
+
+    <div class="mat-elevation-z8 mt-4">
         <table mat-table [dataSource]="dataSource">
 
             <ng-container matColumnDef="firstName">

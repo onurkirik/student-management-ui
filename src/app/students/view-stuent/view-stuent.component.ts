@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Gender } from 'src/app/models/gender.model';
 import { Student } from 'src/app/models/student.model';
@@ -19,7 +20,8 @@ export class ViewStuentComponent {
     private readonly _studentService: StudentsService,
     private readonly _genderService: GenderService,
     private _activatedRouter: ActivatedRoute,
-    private _router: Router
+    private _router: Router,
+    private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -56,9 +58,27 @@ export class ViewStuentComponent {
   public updateStudent() {
     this._studentService.update(this.studentId!, this.student!).subscribe(
       (success) => {
-        this._router.navigateByUrl('students')
+        this._router.navigateByUrl('students');
+        this._snackBar.open("Güncelleme işlemi başarıyla tamamlandı.", undefined, {
+          duration: 2000
+        });
       }, (err) => {
+        this._snackBar.open("Üzgünüm bir şeyler ters gitti", undefined, {
+          duration: 2000
+        })
+      }
+    );
+  }
 
+  public deleteStudent() {
+    this._studentService.deleteStudent(this.student?.id!).subscribe(
+      (success) => {
+        this._snackBar.open("Öğrenci başarıyla silindi", undefined, { duration: 2000 });
+        setTimeout(() => {
+          this._router.navigateByUrl('students');
+        }, 2000);
+      }, (error) => {
+        this._snackBar.open("Üzgünüm bir şeyler ters gitti", undefined, { duration: 2000 });
       }
     );
   }
